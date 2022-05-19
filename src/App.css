@@ -27,7 +27,98 @@
 .App-link {
   color: #61dafb;
 }
-
+.myButton0 {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 6px;
+  padding: 20px;
+  border-radius: 0px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  display: inline-block;
+  background-image: radial-gradient(at center center, rgb(28, 110, 164) 0%, rgb(20, 78, 117) 100%);
+  border: 2px solid rgb(28, 110, 164);
+}
+.myButton0:hover {
+  background: #1c6ea4;
+}
+.myButton0:active {
+  background: #144e75;
+}
+.myButton1 {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 6px;
+  padding: 20px;
+  border-radius: 50px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  display: inline-block;
+  background-image: radial-gradient(at center center, rgb(28, 164, 57) 0%, rgb(20, 117, 28) 100%);
+  border: 2px solid rgb(28, 164, 69);
+}
+.myButton1:hover {
+  background: #1c6ea4;
+}
+.myButton1:active {
+  background: #144e75;
+}
+.myButtonX {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 6px;
+  padding: 20px;
+  border-radius: 0px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  display: inline-block;
+  background-image: radial-gradient(at center center, rgb(164, 28, 28) 0%, rgb(117, 20, 20) 100%);
+  border: 2px solid rgb(164, 28, 28);
+}
+.myButtonX:hover {
+  background: #a41c1c;
+}
+.myButtonX:active {
+  background: #751414;
+}
+.myButtonY {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 6px;
+  padding: 20px;
+  border-radius: 0px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  display: inline-block;
+  background-image: radial-gradient(at center center, rgb(164, 155, 28) 0%, rgb(117, 111, 20) 100%);
+  border: 2px solid rgb(28, 110, 164);
+}
+.myButtonY:hover {
+  background: #1c6ea4;
+}
+.myButtonY:active {
+  background: #144e75;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
