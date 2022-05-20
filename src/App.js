@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-//import Blocks from "./Blocks.js";
 import Controls from "./components/Controls";
 import Board from "./components/Board";
-import { board } from "./input_board";
+import { board, initBoard } from "./input_board";
 
 function App() {
   //let objectBoard = board;
@@ -12,31 +11,46 @@ function App() {
   //     objectBoard[x][y] = Blocks(objectBoard[x][y]);
   //   }
   // }
-  const [inputBoard, setInputBoard] = useState(board);
-  const [currentBoard, setCurrentBoard] = useState(inputBoard);
-  const [ballSpot, setBallSpot] = useState([1, 2]);
+  //const [inputBoard, setInputBoard] = useState(board);
+  const [currentBoard, setCurrentBoard] = useState(board);
+  const [ballSpot, setBallSpot] = useState([1, 1]);
 
   const updateBoard = (x, y, data) => {
     let copy = [...currentBoard];
     copy[x][y] = data;
     setCurrentBoard(copy);
+    // console.log("Board updated");
   };
   const updateBallSpot = (x, y) => {
-    updateBoard(ballSpot[0], ballSpot[1], "0");
-    setBallSpot([x, y]);
-    updateBoard(ballSpot[0], ballSpot[1], "1");
+    deleteBall();
+    // console.log("clicked xy: " + x + y);
+    setBallSpot([Number(x), Number(y)]);
+    addBall(x, y);
   };
-  //const userBall = () => Controls.generateBall(currentBoard, 1, 1);
-  //let UserGame = new Game(UserBall);
-  //UserGame.start(); {
-  // new Controls.Game(Controls.generateBall(currentBoard, 1, 1)).start();
+  const deleteBall = () => {
+    updateBoard(ballSpot[0], ballSpot[1], "0");
+    console.log("Deleted ball in spot " + ballSpot[0] + ballSpot[1]);
+  };
+  const addBall = (x, y) => {
+    updateBoard(Number(x), Number(y), "1");
+    console.log("Placed ball in spot " + Number(x) + Number(y));
+  };
 
+  useEffect(() => {
+    updateBoard(ballSpot[0], ballSpot[1], "1");
+  }, [initBoard]);
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={() => {}}>bruteMain</button>
+        <button
+          onClick={() => {
+            setCurrentBoard(initBoard);
+          }}
+        >
+          ResetBoard
+        </button>
         <div>
-          <Board currentBoard={currentBoard}></Board>
+          <Board currentBoard={currentBoard} updateBallSpot={updateBallSpot}></Board>
         </div>
         <Controls
           updateBoard={updateBoard}

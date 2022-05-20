@@ -12,11 +12,12 @@ function Controls(props) {
   }
 
   class Ball {
-    constructor(x, y, vector, gameboard) {
+    constructor(x, y, vector, gameboard, randomize = false) {
       this.x = x;
       this.y = y;
       this.gameboard = gameboard;
       this.vector = vector;
+      this.randomize = randomize;
     }
     randomInt(min, max) {
       // min and max included
@@ -51,16 +52,22 @@ function Controls(props) {
       }
     }
     updateVector() {
-      //now is never Y because we override it as 1;
-      let isNowY = this.gameboard[this.x][this.y] === "Y";
-      if (isNowY) {
+      //if we stepped on Y:
+      if (this.randomize) {
         let rng = this.randomInt(1, 3);
+        console.log("randomized output: " + rng);
         if (rng === 1) {
         } else if (rng === 2) {
           this.vector.y = -this.vector.y;
         } else if (rng === 3) {
           this.vector.x = -this.vector.x;
         }
+        this.randomize = false;
+      }
+      //check if incoming spot is Y:
+      if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "Y") {
+        console.log("next is Y");
+        this.randomize = true;
       }
       //check if there is left/right wall
       if (this.gameboard[this.x][this.y + this.vector.y] === "X") {
@@ -81,6 +88,11 @@ function Controls(props) {
         } else if (isDownWall) {
           this.vector.x = -1;
         }
+      }
+      //check if incoming spot is Y:
+      if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "Y") {
+        console.log("next is Y");
+        this.randomize = true;
       }
       // Bounce off corner only if there are no walls on X and Y axis
       else if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "X") {
@@ -137,7 +149,7 @@ function Controls(props) {
     if (newBall.isStartingPosAllowed()) {
       props.updateBoard(x, y, "1");
       //props.updateBallSpot(x, y);
-      console.log("Ball placed.");
+      console.log("Ball generated Controls.js.");
       return newBall;
     } else {
       console.log("You messed up. Ball is not in corner.");
