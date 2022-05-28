@@ -47,7 +47,7 @@ function Controls(props) {
         }
         return true;
       } else {
-        console.log("Ball can't be here at start.");
+        alert("Ball must be placed in corner.");
         return false;
       }
     }
@@ -151,8 +151,6 @@ function Controls(props) {
       //props.updateBallSpot(x, y);
       console.log("Ball generated Controls.js.");
       return newBall;
-    } else {
-      console.log("You messed up. Ball is not in corner.");
     }
   }
 

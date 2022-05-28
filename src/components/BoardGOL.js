@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-export default function Board(props) {
+export default function BoardGOL(props) {
   function handleClick(row, column) {
-    props.updateBallSpot(Number(row), Number(column));
+    //this only switches between Y and 0
+    props.updateGOLBoard(Number(row), Number(column));
   }
   // useEffect(() => {
-  //   console.log("useEffect Board.js tiggered.");
+  //   console.log("useEffect GOLBoard.js tiggered.");
   // }, [props]);
   return (
     <table cellPadding={"0px"} cellSpacing={"0px"}>
@@ -19,25 +20,13 @@ export default function Board(props) {
                 return (
                   <td key={indexC} width={"15px"}>
                     {(() => {
-                      if (spot === "1") {
-                        return (
-                          <Button key={indexR + " " + indexC} bsPrefix="myButton1">
-                            {" . "}
-                          </Button>
-                        );
-                      } else if (spot === "Y") {
+                      if (spot === "Y") {
                         return (
                           <Button
                             onClick={() => handleClick(indexR, indexC)}
                             key={indexR + " " + indexC}
                             bsPrefix="myButtonY"
                           >
-                            {" . "}
-                          </Button>
-                        );
-                      } else if (spot === "X") {
-                        return (
-                          <Button key={indexR + " " + indexC} bsPrefix="myButtonX">
                             {" . "}
                           </Button>
                         );
