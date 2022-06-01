@@ -6,9 +6,11 @@ export default function Board(props) {
   function handleClick(row, column) {
     props.updateBallSpot(Number(row), Number(column));
   }
-  // useEffect(() => {
-  //   console.log("useEffect Board.js tiggered.");
-  // }, [props]);
+  function handleRightClick(event, row, column) {
+    event.preventDefault();
+    props.updateYSpot(Number(row), Number(column));
+  }
+
   return (
     <table cellPadding={"0px"} cellSpacing={"0px"}>
       {props.currentBoard.map((rows, indexR) => {
@@ -21,7 +23,12 @@ export default function Board(props) {
                     {(() => {
                       if (spot === "1") {
                         return (
-                          <Button key={indexR + " " + indexC} bsPrefix="myButton1">
+                          <Button
+                            onClick={() => handleClick(indexR, indexC)}
+                            onContextMenu={(event) => event.preventDefault()}
+                            key={indexR + " " + indexC}
+                            bsPrefix="myButton1"
+                          >
                             {" . "}
                           </Button>
                         );
@@ -29,6 +36,7 @@ export default function Board(props) {
                         return (
                           <Button
                             onClick={() => handleClick(indexR, indexC)}
+                            onContextMenu={(event) => handleRightClick(event, indexR, indexC)}
                             key={indexR + " " + indexC}
                             bsPrefix="myButtonY"
                           >
@@ -37,7 +45,11 @@ export default function Board(props) {
                         );
                       } else if (spot === "X") {
                         return (
-                          <Button key={indexR + " " + indexC} bsPrefix="myButtonX">
+                          <Button
+                            onContextMenu={(event) => event.preventDefault()}
+                            key={indexR + " " + indexC}
+                            bsPrefix="myButtonX"
+                          >
                             {" . "}
                           </Button>
                         );
@@ -45,6 +57,7 @@ export default function Board(props) {
                         return (
                           <Button
                             onClick={() => handleClick(indexR, indexC)}
+                            onContextMenu={(event) => handleRightClick(event, indexR, indexC)}
                             key={indexR + " " + indexC}
                             bsPrefix="myButton0"
                           >

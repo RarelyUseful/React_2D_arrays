@@ -1,15 +1,10 @@
-import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export default function BoardGOL(props) {
   function handleClick(row, column) {
     //this only switches between Y and 0
     props.updateGOLBoard(Number(row), Number(column));
   }
-  // useEffect(() => {
-  //   console.log("useEffect GOLBoard.js tiggered.");
-  // }, [props]);
   return (
     <table cellPadding={"0px"} cellSpacing={"0px"}>
       {props.currentBoard.map((rows, indexR) => {
@@ -20,10 +15,11 @@ export default function BoardGOL(props) {
                 return (
                   <td key={indexC} width={"15px"}>
                     {(() => {
-                      if (spot === "Y") {
+                      if (spot === "1") {
                         return (
                           <Button
                             onClick={() => handleClick(indexR, indexC)}
+                            onContextMenu={(event) => event.preventDefault()}
                             key={indexR + " " + indexC}
                             bsPrefix="myButtonY"
                           >
@@ -34,6 +30,7 @@ export default function BoardGOL(props) {
                         return (
                           <Button
                             onClick={() => handleClick(indexR, indexC)}
+                            onContextMenu={(event) => event.preventDefault()}
                             key={indexR + " " + indexC}
                             bsPrefix="myButton0"
                           >

@@ -55,20 +55,19 @@ function Controls(props) {
       //if we stepped on Y:
       if (this.randomize) {
         let rng = this.randomInt(1, 3);
-        console.log("randomized output: " + rng);
+
         if (rng === 1) {
+          console.log("no switching");
         } else if (rng === 2) {
+          console.log("switched y");
           this.vector.y = -this.vector.y;
         } else if (rng === 3) {
+          console.log("switched x");
           this.vector.x = -this.vector.x;
         }
         this.randomize = false;
       }
-      //check if incoming spot is Y:
-      if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "Y") {
-        console.log("next is Y");
-        this.randomize = true;
-      }
+
       //check if there is left/right wall
       if (this.gameboard[this.x][this.y + this.vector.y] === "X") {
         let isLeftWall = this.gameboard[this.x][this.y - 1] === "X";
@@ -91,7 +90,7 @@ function Controls(props) {
       }
       //check if incoming spot is Y:
       if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "Y") {
-        console.log("next is Y");
+        //console.log("next is Y");
         this.randomize = true;
       }
       // Bounce off corner only if there are no walls on X and Y axis
@@ -113,16 +112,15 @@ function Controls(props) {
   }
 
   class Game {
-    constructor(ball, state = 0) {
+    constructor(ball) {
       this.board = ball.gameboard;
       this.ball = ball;
-      this.state = state;
+
       this.startingX = ball.x;
       this.startingY = ball.y;
     }
     start() {
       this.ball.updateVector();
-      this.state = 1;
       let delay100 = setInterval(() => {
         this.ball.move();
         this.ball.updateVector();
@@ -134,8 +132,6 @@ function Controls(props) {
     }
     isBallBackOnStart() {
       if (this.ball.x == this.startingX && this.ball.y == this.startingY) {
-        this.state = 2;
-
         return true;
       } else return false;
     }
@@ -154,15 +150,6 @@ function Controls(props) {
     }
   }
 
-  // const setBall = (board, coords) => {
-  //   generateBall(board, coords);
-  // };
-  // let ballInstance;
-  // const userGame = () => {
-  //   console.log("New game instanced.");
-  //   return new Game(ballInstance).start();
-  // };
-  //UserGame.start();
   return (
     <div>
       {/* <button onClick={() => (ballInstance = setBall(props.inputBoard, props.ballSpot))}>Add ball</button>

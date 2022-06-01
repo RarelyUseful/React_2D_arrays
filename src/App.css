@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -15,7 +16,18 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin);
+  color: white;
+}
+.App-game {
+  background-color: #282c34;
+  min-height: 80%;
+  min-width: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,9 +35,47 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.App-controls {
+  background-color: #282c34;
+  min-height: 80%;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.columnsWrapper {
+  display: flex;
+  height: 100%;
+}
 .App-link {
   color: #61dafb;
+}
+.myButtonMenu {
+  color: rgb(255, 255, 255);
+  min-width: 25vw;
+  font-size: 12px;
+  line-height: 6px;
+  padding: 20px;
+  border-radius: 0px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  display: inline-block;
+  background-image: radial-gradient(at center center, rgb(25, 25, 25) 0%, rgb(55, 55, 55) 100%);
+  border: 2px solid rgb(0, 0, 0);
+}
+.myButtonMenu:hover {
+  background: rgb(28, 110, 164);
+}
+.myButtonMenu:active {
+  background: rgb(20, 78, 117) 100%;
 }
 .myButton0 {
   color: rgb(255, 255, 255);
