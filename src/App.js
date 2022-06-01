@@ -7,12 +7,12 @@ import GOLControls from "./components/GOLControls";
 import Board from "./components/Board";
 import BoardGOL from "./components/BoardGOL";
 
-import { board, initBoard, GOLboard, initGOLboard } from "./input_board";
+import { board, initBoard, GOLboard, initGOLboard } from "./components/input_board";
 
 function App() {
   const [currentGame, setCurrentGame] = useState("GOL");
   const [bounceBoard, setBounceBoard] = useState(board);
-  const [ballSpot, setBallSpot] = useState([1, 1]);
+  const [ballSpot, setBallSpot] = useState([1, 13]);
   const [GOLBoard, setGOLBoard] = useState(GOLboard);
   //Bounce Logic:
   const updateBoard = (x, y, data) => {

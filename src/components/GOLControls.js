@@ -1,3 +1,4 @@
+import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 
 function GOLControls(props) {
@@ -40,23 +41,7 @@ function GOLControls(props) {
 
     return pushNewBoard(copy);
   };
-  const delayTick = () =>
-    setTimeout(() => {
-      nextGen();
-      autoTick();
-    }, 1000);
 
-  const autoTick = () => {
-    if (isStopped == true) {
-      // clearInterval(delayTick);
-      console.log("game should be stopped");
-      return;
-    } else if (isStopped == false) {
-      console.log("autoplay still on");
-      nextGen();
-      autoTick();
-    }
-  };
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!isStopped) {
@@ -65,38 +50,43 @@ function GOLControls(props) {
       if (isStopped) {
         clearTimeout(timer);
       }
-    }, 1000);
+    }, 500);
     return () => clearTimeout(timer);
   }, [currentBoard, isStopped]);
   //useEffect(() => {}, [currentBoard, isStopped]);
 
   return (
     <div>
-      {/* <button onClick={() => (ballInstance = setBall(props.inputBoard, props.ballSpot))}>Add ball</button>
-          <button onClick={() => userGame()}>NewGame+Start</button> */}
-      <p>
-        <button onClick={() => nextGen()}>Tick</button>
-      </p>
-      <p>
-        <button
+      <p>Controls:</p>
+      <div>
+        <Button bsPrefix="myButtonMenu" onClick={() => nextGen()}>
+          Tick
+        </Button>
+      </div>
+      <div>
+        <Button
+          bsPrefix="myButtonMenu"
           onClick={() => {
             setisStopped(false);
             //autoTick();
           }}
         >
           Start Auto Tick
-        </button>
-      </p>
-      <p>
-        <button
+        </Button>
+      </div>
+      <div>
+        <Button
+          bsPrefix="myButtonMenu"
           onClick={() => {
             setisStopped(true);
             //autoTick();
           }}
         >
           Stop Auto Tick
-        </button>
-      </p>
+        </Button>
+      </div>
+      <p>Hints:</p>
+      <div>- Left Click to place/remove living cell </div>
     </div>
   );
 }

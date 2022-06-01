@@ -1,21 +1,10 @@
 .App {
   text-align: center;
   background-color: #282c34;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  border-color: #282c34;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 8vh;
   display: flex;
   flex-direction: column;
@@ -25,9 +14,8 @@
   color: white;
 }
 .App-game {
-  background-color: #282c34;
   min-height: 80%;
-  min-width: 55%;
+  min-width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,12 +24,11 @@
   color: white;
 }
 .App-controls {
-  background-color: #282c34;
   min-height: 80%;
-  width: 10%;
+  min-width: 30%;
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  flex-direction: row;
+  align-items: top;
   justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -72,10 +59,11 @@
   border: 2px solid rgb(0, 0, 0);
 }
 .myButtonMenu:hover {
-  background: rgb(28, 110, 164);
+  background: rgb(45, 45, 45);
+  border: 2px solid rgb(222, 222, 222);
 }
 .myButtonMenu:active {
-  background: rgb(20, 78, 117) 100%;
+  background: rgb(33, 33, 33) 100%;
 }
 .myButton0 {
   color: rgb(255, 255, 255);
@@ -104,7 +92,7 @@
   color: rgb(255, 255, 255);
   font-size: 12px;
   line-height: 6px;
-  padding: 20px;
+  padding: 19px;
   border-radius: 50px;
   font-family: Verdana, Geneva, sans-serif;
   font-weight: normal;

@@ -2,6 +2,7 @@
 // Upper left corner is [0][0];
 // so vector[2][3] moves ball 2 down and 3 right
 // vector [-2][1] moves ball 2 up and 1 right
+import Button from "react-bootstrap/Button";
 
 function Controls(props) {
   class Vector {
@@ -154,7 +155,21 @@ function Controls(props) {
     <div>
       {/* <button onClick={() => (ballInstance = setBall(props.inputBoard, props.ballSpot))}>Add ball</button>
       <button onClick={() => userGame()}>NewGame+Start</button> */}
-      <button onClick={() => new Game(generateBall(props.inputBoard, props.ballSpot)).start()}>Start!</button>
+      <div>
+        <p>Controls:</p>
+        <Button
+          bsPrefix="myButtonMenu"
+          onClick={() => new Game(generateBall(props.inputBoard, props.ballSpot)).start()}
+        >
+          Start!
+        </Button>
+      </div>
+      <p>Hints:</p>
+      <div>- Ball must be placed in corner</div>
+      <div>- Ball stops when returns to starting position</div>
+
+      <div>- Left Click to place/remove Ball </div>
+      <div>- Right Click to place/remove Randomizer</div>
     </div>
   );
 }
