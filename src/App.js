@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Button from "react-bootstrap/Button";
-
 import Controls from "./components/Controls";
 import GOLControls from "./components/GOLControls";
 import Board from "./components/Board";
 import BoardGOL from "./components/BoardGOL";
-
 import { board, initBoard, GOLboard, initGOLboard } from "./components/input_board";
 
 function App() {
@@ -22,20 +20,20 @@ function App() {
     // console.log("Board updated");
   };
   const updateBallSpot = (x, y) => {
-    deleteBall();
-    // console.log("clicked xy: " + x + y);
     if (!(ballSpot[0] === x && ballSpot[1] === y)) {
+      deleteBall();
+      // console.log("clicked xy: " + x + y);
       setBallSpot([Number(x), Number(y)]);
       addBall(x, y);
     }
   };
   const deleteBall = () => {
     updateBoard(ballSpot[0], ballSpot[1], "0");
-    console.log("Deleted ball in spot " + ballSpot[0] + ballSpot[1]);
+    //console.log("Deleted ball in spot " + ballSpot[0] + ballSpot[1]);
   };
   const addBall = (x, y) => {
     updateBoard(Number(x), Number(y), "1");
-    console.log("Placed ball in spot " + Number(x) + Number(y));
+    //console.log("Placed ball in spot " + Number(x) + Number(y));
   };
   const updateYSpot = (x, y) => {
     if (bounceBoard[x][y] === "0") {
@@ -55,7 +53,7 @@ function App() {
     setGOLBoard(copy);
   };
   const pushNewBoard = (newboard) => {
-    console.log("got new board from child");
+    //console.log("got new board from child");
     setGOLBoard(newboard);
   };
   //Switching game logic:
@@ -123,26 +121,26 @@ function App() {
       <div className="columnsWrapper">
         {currentGame === "Bounce" && (
           <>
-            <body className="App-game">
+            <div className="App-game">
               <Board
                 updateBallSpot={updateBallSpot}
                 updateYSpot={updateYSpot}
                 currentBoard={bounceBoard}
               ></Board>
-            </body>
-            <body className="App-controls">
+            </div>
+            <div className="App-controls">
               <Controls updateBoard={updateBoard} inputBoard={bounceBoard} ballSpot={ballSpot}></Controls>
-            </body>
+            </div>
           </>
         )}
         {currentGame === "GOL" && (
           <>
-            <body className="App-game">
+            <div className="App-game">
               <BoardGOL currentBoard={GOLBoard} updateGOLBoard={updateGOLBoard}></BoardGOL>
-            </body>
-            <body className="App-controls">
+            </div>
+            <div className="App-controls">
               <GOLControls currentBoard={GOLBoard} pushNewBoard={pushNewBoard}></GOLControls>
-            </body>
+            </div>
           </>
         )}
       </div>

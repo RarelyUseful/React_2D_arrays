@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export default function Board(props) {
   function handleClick(row, column) {

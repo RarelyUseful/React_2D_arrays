@@ -33,11 +33,6 @@ function GOLControls(props) {
         }
       }
     }
-    //console.log("current:");
-    //console.table(currentBoard);
-    //console.log("pushed:");
-    //    console.table(copy);
-    //console.log(currentBoard);
 
     return pushNewBoard(copy);
   };
@@ -52,8 +47,7 @@ function GOLControls(props) {
       }
     }, 500);
     return () => clearTimeout(timer);
-  }, [currentBoard, isStopped]);
-  //useEffect(() => {}, [currentBoard, isStopped]);
+  }, [nextGen, isStopped]);
 
   return (
     <div>
@@ -87,6 +81,7 @@ function GOLControls(props) {
       </div>
       <p>Hints:</p>
       <div>- Left Click to place/remove living cell </div>
+      <div>- Autoplay Ticks every 500 ms </div>
     </div>
   );
 }

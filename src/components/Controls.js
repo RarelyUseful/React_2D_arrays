@@ -58,12 +58,12 @@ function Controls(props) {
         let rng = this.randomInt(1, 3);
 
         if (rng === 1) {
-          console.log("no switching");
+          //console.log("no switching");
         } else if (rng === 2) {
-          console.log("switched y");
+          //console.log("switched y");
           this.vector.y = -this.vector.y;
         } else if (rng === 3) {
-          console.log("switched x");
+          //console.log("switched x");
           this.vector.x = -this.vector.x;
         }
         this.randomize = false;
@@ -132,7 +132,7 @@ function Controls(props) {
       }, 100);
     }
     isBallBackOnStart() {
-      if (this.ball.x == this.startingX && this.ball.y == this.startingY) {
+      if (this.ball.x === this.startingX && this.ball.y === this.startingY) {
         return true;
       } else return false;
     }
@@ -145,8 +145,7 @@ function Controls(props) {
     let newBall = new Ball(x, y, new Vector(), someboard);
     if (newBall.isStartingPosAllowed()) {
       props.updateBoard(x, y, "1");
-      //props.updateBallSpot(x, y);
-      console.log("Ball generated Controls.js.");
+      //console.log("Ball generated Controls.js.");
       return newBall;
     }
   }
@@ -168,7 +167,7 @@ function Controls(props) {
       <div>- Ball must be placed in corner</div>
       <div>- Ball stops when returns to starting position</div>
 
-      <div>- Left Click to place/remove Ball </div>
+      <div>- Left Click to move ball </div>
       <div>- Right Click to place/remove Randomizer</div>
     </div>
   );
