@@ -6,6 +6,7 @@ import GOLControls from "./components/GOLControls";
 import Board from "./components/Board";
 import BoardGOL from "./components/BoardGOL";
 import { board, initBoard, GOLboard, initGOLboard } from "./components/input_board";
+import Footer from "./components/Footer";
 
 function App() {
   const [currentGame, setCurrentGame] = useState("GOL");
@@ -144,6 +145,7 @@ function App() {
           </>
         )}
       </div>
+      <Footer></Footer>
     </div>
   );
 }
