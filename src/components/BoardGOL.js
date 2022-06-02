@@ -1,14 +1,10 @@
 import Button from "react-bootstrap/Button";
 
-export default function Board(props) {
+export default function BoardGOL(props) {
   function handleClick(row, column) {
-    props.updateBallSpot(Number(row), Number(column));
+    //this only switches between Y and 0
+    props.updateGOLBoard(Number(row), Number(column));
   }
-  function handleRightClick(event, row, column) {
-    event.preventDefault();
-    props.updateYSpot(Number(row), Number(column));
-  }
-
   return (
     <table cellPadding={"0px"} cellSpacing={"0px"}>
       {props.currentBoard.map((rows, indexR) => {
@@ -25,28 +21,7 @@ export default function Board(props) {
                             onClick={() => handleClick(indexR, indexC)}
                             onContextMenu={(event) => event.preventDefault()}
                             key={indexR + " " + indexC}
-                            bsPrefix="myButton1"
-                          >
-                            {" . "}
-                          </Button>
-                        );
-                      } else if (spot === "Y") {
-                        return (
-                          <Button
-                            onClick={() => handleClick(indexR, indexC)}
-                            onContextMenu={(event) => handleRightClick(event, indexR, indexC)}
-                            key={indexR + " " + indexC}
                             bsPrefix="myButtonY"
-                          >
-                            {" . "}
-                          </Button>
-                        );
-                      } else if (spot === "X") {
-                        return (
-                          <Button
-                            onContextMenu={(event) => event.preventDefault()}
-                            key={indexR + " " + indexC}
-                            bsPrefix="myButtonX"
                           >
                             {" . "}
                           </Button>
@@ -55,7 +30,7 @@ export default function Board(props) {
                         return (
                           <Button
                             onClick={() => handleClick(indexR, indexC)}
-                            onContextMenu={(event) => handleRightClick(event, indexR, indexC)}
+                            onContextMenu={(event) => event.preventDefault()}
                             key={indexR + " " + indexC}
                             bsPrefix="myButton0"
                           >

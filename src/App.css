@@ -1,21 +1,21 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: #282c34;
+  border-color: #282c34;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin);
+  color: white;
+}
+.App-game {
+  min-height: 80%;
+  min-width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,9 +23,47 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.App-controls {
+  min-height: 80%;
+  min-width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.columnsWrapper {
+  display: flex;
+  height: 100%;
+}
 .App-link {
   color: #61dafb;
+}
+.myButtonMenu {
+  color: rgb(255, 255, 255);
+  min-width: 25vw;
+  font-size: 12px;
+  line-height: 6px;
+  padding: 20px;
+  border-radius: 0px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  display: inline-block;
+  background-image: radial-gradient(at center center, rgb(25, 25, 25) 0%, rgb(55, 55, 55) 100%);
+  border: 2px solid rgb(0, 0, 0);
+}
+.myButtonMenu:hover {
+  background: rgb(45, 45, 45);
+  border: 2px solid rgb(222, 222, 222);
+}
+.myButtonMenu:active {
+  background: rgb(33, 33, 33) 100%;
 }
 .myButton0 {
   color: rgb(255, 255, 255);
@@ -45,16 +83,16 @@
   border: 2px solid rgb(28, 110, 164);
 }
 .myButton0:hover {
-  background: #1c6ea4;
+  background: rgb(28, 110, 164);
 }
 .myButton0:active {
-  background: #144e75;
+  background: rgb(20, 78, 117) 100%;
 }
 .myButton1 {
   color: rgb(255, 255, 255);
   font-size: 12px;
   line-height: 6px;
-  padding: 20px;
+  padding: 19px;
   border-radius: 50px;
   font-family: Verdana, Geneva, sans-serif;
   font-weight: normal;
@@ -64,14 +102,14 @@
   text-transform: none;
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   display: inline-block;
-  background-image: radial-gradient(at center center, rgb(28, 164, 57) 0%, rgb(20, 117, 28) 100%);
-  border: 2px solid rgb(28, 164, 69);
+  background-image: radial-gradient(at center center, rgb(28, 164, 28) 0%, rgb(20, 117, 20) 100%);
+  border: 2px solid rgb(28, 164, 28);
 }
 .myButton1:hover {
-  background: #1c6ea4;
+  background: rgb(28, 164, 28);
 }
 .myButton1:active {
-  background: #144e75;
+  background: rgb(20, 117, 20);
 }
 .myButtonX {
   color: rgb(255, 255, 255);
@@ -91,10 +129,10 @@
   border: 2px solid rgb(164, 28, 28);
 }
 .myButtonX:hover {
-  background: #a41c1c;
+  background: rgb(164, 28, 28);
 }
 .myButtonX:active {
-  background: #751414;
+  background: rgb(117, 20, 20);
 }
 .myButtonY {
   color: rgb(255, 255, 255);
@@ -110,14 +148,14 @@
   text-transform: none;
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   display: inline-block;
-  background-image: radial-gradient(at center center, rgb(164, 155, 28) 0%, rgb(117, 111, 20) 100%);
+  background-image: radial-gradient(at center center, rgb(255, 200, 20) 0%, rgb(180, 100, 20) 100%);
   border: 2px solid rgb(28, 110, 164);
 }
 .myButtonY:hover {
-  background: #1c6ea4;
+  background: rgb(255, 200, 20);
 }
 .myButtonY:active {
-  background: #144e75;
+  background: rgb(180, 100, 20);
 }
 @keyframes App-logo-spin {
   from {

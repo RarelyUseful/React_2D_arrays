@@ -2,6 +2,7 @@
 // Upper left corner is [0][0];
 // so vector[2][3] moves ball 2 down and 3 right
 // vector [-2][1] moves ball 2 up and 1 right
+import Button from "react-bootstrap/Button";
 
 function Controls(props) {
   class Vector {
@@ -47,7 +48,7 @@ function Controls(props) {
         }
         return true;
       } else {
-        console.log("Ball can't be here at start.");
+        alert("Ball must be placed in corner.");
         return false;
       }
     }
@@ -55,20 +56,19 @@ function Controls(props) {
       //if we stepped on Y:
       if (this.randomize) {
         let rng = this.randomInt(1, 3);
-        console.log("randomized output: " + rng);
+
         if (rng === 1) {
+          //console.log("no switching");
         } else if (rng === 2) {
+          //console.log("switched y");
           this.vector.y = -this.vector.y;
         } else if (rng === 3) {
+          //console.log("switched x");
           this.vector.x = -this.vector.x;
         }
         this.randomize = false;
       }
-      //check if incoming spot is Y:
-      if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "Y") {
-        console.log("next is Y");
-        this.randomize = true;
-      }
+
       //check if there is left/right wall
       if (this.gameboard[this.x][this.y + this.vector.y] === "X") {
         let isLeftWall = this.gameboard[this.x][this.y - 1] === "X";
@@ -91,7 +91,7 @@ function Controls(props) {
       }
       //check if incoming spot is Y:
       if (this.gameboard[this.x + this.vector.x][this.y + this.vector.y] === "Y") {
-        console.log("next is Y");
+        //console.log("next is Y");
         this.randomize = true;
       }
       // Bounce off corner only if there are no walls on X and Y axis
@@ -113,16 +113,15 @@ function Controls(props) {
   }
 
   class Game {
-    constructor(ball, state = 0) {
+    constructor(ball) {
       this.board = ball.gameboard;
       this.ball = ball;
-      this.state = state;
+
       this.startingX = ball.x;
       this.startingY = ball.y;
     }
     start() {
       this.ball.updateVector();
-      this.state = 1;
       let delay100 = setInterval(() => {
         this.ball.move();
         this.ball.updateVector();
@@ -133,9 +132,7 @@ function Controls(props) {
       }, 100);
     }
     isBallBackOnStart() {
-      if (this.ball.x == this.startingX && this.ball.y == this.startingY) {
-        this.state = 2;
-
+      if (this.ball.x === this.startingX && this.ball.y === this.startingY) {
         return true;
       } else return false;
     }
@@ -148,28 +145,30 @@ function Controls(props) {
     let newBall = new Ball(x, y, new Vector(), someboard);
     if (newBall.isStartingPosAllowed()) {
       props.updateBoard(x, y, "1");
-      //props.updateBallSpot(x, y);
-      console.log("Ball generated Controls.js.");
+      //console.log("Ball generated Controls.js.");
       return newBall;
-    } else {
-      console.log("You messed up. Ball is not in corner.");
     }
   }
 
-  // const setBall = (board, coords) => {
-  //   generateBall(board, coords);
-  // };
-  // let ballInstance;
-  // const userGame = () => {
-  //   console.log("New game instanced.");
-  //   return new Game(ballInstance).start();
-  // };
-  //UserGame.start();
   return (
     <div>
       {/* <button onClick={() => (ballInstance = setBall(props.inputBoard, props.ballSpot))}>Add ball</button>
       <button onClick={() => userGame()}>NewGame+Start</button> */}
-      <button onClick={() => new Game(generateBall(props.inputBoard, props.ballSpot)).start()}>Start!</button>
+      <div>
+        <p>Controls:</p>
+        <Button
+          bsPrefix="myButtonMenu"
+          onClick={() => new Game(generateBall(props.inputBoard, props.ballSpot)).start()}
+        >
+          Start!
+        </Button>
+      </div>
+      <p>Hints:</p>
+      <div>- Ball must be placed in corner</div>
+      <div>- Ball stops when returns to starting position</div>
+
+      <div>- Left Click to move ball </div>
+      <div>- Right Click to place/remove Randomizer</div>
     </div>
   );
 }
