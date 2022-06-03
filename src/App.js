@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 function App() {
   const [currentGame, setCurrentGame] = useState("GOL");
   const [bounceBoard, setBounceBoard] = useState(board);
-  const [ballSpot, setBallSpot] = useState([1, 13]);
+  const [ballSpot, setBallSpot] = useState([1, 8]);
   const [GOLBoard, setGOLBoard] = useState(GOLboard);
   //Bounce Logic:
   const updateBoard = (x, y, data) => {
@@ -79,7 +79,7 @@ function App() {
           {currentGame === "Bounce" && (
             <>
               <Button
-                bsPrefix="myButtonMenu"
+                bsPrefix="myButtonHead"
                 onClick={() => {
                   switchGame();
                 }}
@@ -87,7 +87,7 @@ function App() {
                 Go To Game of Life
               </Button>
               <Button
-                bsPrefix="myButtonMenu"
+                bsPrefix="myButtonHead"
                 onClick={() => {
                   setBounceBoard(initBoard);
                 }}
@@ -99,7 +99,7 @@ function App() {
           {currentGame === "GOL" && (
             <>
               <Button
-                bsPrefix="myButtonMenu"
+                bsPrefix="myButtonHead"
                 onClick={() => {
                   switchGame();
                 }}
@@ -107,7 +107,7 @@ function App() {
                 Go To Bounce
               </Button>
               <Button
-                bsPrefix="myButtonMenu"
+                bsPrefix="myButtonHead"
                 onClick={() => {
                   setGOLBoard(initGOLboard);
                 }}

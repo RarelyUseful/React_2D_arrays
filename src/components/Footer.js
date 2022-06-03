@@ -1,9 +1,8 @@
 export default function Footer() {
   return (
     <div className="App-footer">
-      <div>2022, Copyright:</div>
-
-      <div>Paweł Białobrodzki,</div>
+      <div>© Copyright: Paweł Białobrodzki, 2022</div>
+      <div></div>
     </div>
   );
 }
