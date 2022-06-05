@@ -33,8 +33,17 @@ function GOLControls(props) {
         }
       }
     }
-
     return pushNewBoard(copy);
+
+    /**TODO: OPTIMIZATION
+     *This function is extra slow, because it has to :
+        make deep copy of array, 
+        count every cell around it,
+        switch(or not) cell in new array.
+        set state with new array
+
+    BUT it's working fine, didn't notice any wierd behavior even on low spec pc/mobile. 
+     */
   };
 
   useEffect(() => {
@@ -62,7 +71,6 @@ function GOLControls(props) {
           bsPrefix="myButtonMenu"
           onClick={() => {
             setisStopped(false);
-            //autoTick();
           }}
         >
           Start Auto Tick
@@ -73,7 +81,6 @@ function GOLControls(props) {
           bsPrefix="myButtonMenu"
           onClick={() => {
             setisStopped(true);
-            //autoTick();
           }}
         >
           Stop Auto Tick

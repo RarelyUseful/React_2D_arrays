@@ -1,9 +1,13 @@
-// X and Y axis switched, X are rows, Y are columns;
-// Upper left corner is [0][0];
-// so vector[2][3] moves ball 2 down and 3 right
-// vector [-2][1] moves ball 2 up and 1 right
+/* X and Y axis switched, X are rows, Y are columns;
+Upper left corner is [0][0];
+so vector[2][3] moves ball 2 down and 3 right
+vector [-2][1] moves ball 2 up and 1 right */
 import Button from "react-bootstrap/Button";
 
+/**This was written in pure JS and then pasted into this project.
+ * If you write something in React.js please don't copy anything from this component.
+ * I'm just too lazy to write it from scratch. Don't judge me.
+ */
 function Controls(props) {
   class Vector {
     constructor(x = 1, y = 1) {

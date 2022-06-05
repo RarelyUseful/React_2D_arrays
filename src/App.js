@@ -18,14 +18,17 @@ function App() {
     let copy = [...bounceBoard];
     copy[x][y] = data;
     setBounceBoard(copy);
-    // console.log("Board updated");
+    /**TODO: OPTIMIZATION
+     * That's not the fastest way to render, because every move ball makes it has to load and re-render entire board.
+     * One way to fix this would be making every spot on board render as a component with it's own props, then React would re-render only spots that changed value. */
   };
   const updateBallSpot = (x, y) => {
+    // console.log("clicked spot x/y: " + x +"/"+ y);
     if (!(ballSpot[0] === x && ballSpot[1] === y)) {
       deleteBall();
-      // console.log("clicked xy: " + x + y);
       setBallSpot([Number(x), Number(y)]);
       addBall(x, y);
+      /**TODO: FEATURE, Left click will open small pop-up where you can select type of tile you wany to put. */
     }
   };
   const deleteBall = () => {
@@ -52,6 +55,10 @@ function App() {
       copy[x][y] = "1";
     }
     setGOLBoard(copy);
+    /**TODO: OPTIMIZATION
+     *Same as updateBoard() above */
+    /**TODO: BUGFIX?
+     *o mobile rapid user inputs skips some of the clicks. */
   };
   const pushNewBoard = (newboard) => {
     //console.log("got new board from child");
@@ -112,7 +119,7 @@ function App() {
                   setGOLBoard(initGOLboard);
                 }}
               >
-                Default GOL Board
+                Default Board
               </Button>
             </>
           )}
@@ -145,6 +152,7 @@ function App() {
           </>
         )}
       </div>
+      <div></div>
       <Footer></Footer>
     </div>
   );
