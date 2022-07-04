@@ -18,9 +18,6 @@ function App() {
     let copy = [...bounceBoard];
     copy[x][y] = data;
     setBounceBoard(copy);
-    /**TODO: OPTIMIZATION
-     * That's not the fastest way to render, because every move ball makes it has to load and re-render entire board.
-     * One way to fix this would be making every spot on board render as a component with it's own props, then React would re-render only spots that changed value. */
   };
   const updateBallSpot = (x, y) => {
     // console.log("clicked spot x/y: " + x +"/"+ y);
@@ -55,8 +52,6 @@ function App() {
       copy[x][y] = "1";
     }
     setGOLBoard(copy);
-    /**TODO: OPTIMIZATION
-     *Same as updateBoard() above */
     /**TODO: BUGFIX?
      *o mobile rapid user inputs skips some of the clicks. */
   };
